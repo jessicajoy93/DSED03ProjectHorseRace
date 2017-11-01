@@ -15,6 +15,15 @@ namespace DSED03ProjectHorseRace
         public Form1()
         {
             InitializeComponent();
+            TransparentBackground();
+        }
+
+        private void TransparentBackground()
+        {
+            //Makes Backgrounds transparent for pictureboxes
+            this.PointToScreen(panel1.Location);
+            panel1.Parent = pbRaceTrack;
+            panel1.BackColor = Color.Transparent;
         }
     }
 }
