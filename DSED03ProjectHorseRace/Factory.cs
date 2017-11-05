@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DSED03ProjectHorseRace.Guy;
-using DSED03ProjectHorseRace.Horse;
+using DSED03ProjectHorseRace;
 
 namespace DSED03ProjectHorseRace.Factory
 {
-    class Factory
+    static class Factory
     {
         // decides which class to instantiate
-        public static Guy.Guy GetAGuy(int id)
+        public static Punter GetAGuy(int id)
         {
             switch (id)
             {
@@ -27,7 +26,7 @@ namespace DSED03ProjectHorseRace.Factory
             }
         }
 
-        public static Horse.Horse GetAHorse(int id)
+        public static Punter GetAHorse(int id)
         {
             switch (id)
             {

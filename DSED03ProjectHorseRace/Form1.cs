@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DSED03ProjectHorseRace.Horse;
+using DSED03ProjectHorseRace;
 
 namespace DSED03ProjectHorseRace
 {
@@ -15,7 +15,8 @@ namespace DSED03ProjectHorseRace
     {
         //private Horse.Horse DefaultHorse = new Horse01();
 
-        Guy.Guy[] myGuy = new Guy.Guy[3];
+        Punter[] myGuy = new Punter[3];
+        Bet myBet = new Bet();
 
         public Form1()
         {
@@ -41,8 +42,11 @@ namespace DSED03ProjectHorseRace
             }
 
             myGuy[0].MyRadioButton = radioButton1;
+            lblJoe.Text = myGuy[0].GuyName + myBet.NotBetYet;
             myGuy[1].MyRadioButton = radioButton2;
+            lblSam.Text = myGuy[1].GuyName + myBet.NotBetYet;
             myGuy[2].MyRadioButton = radioButton3;
+            lblJoshua.Text = myGuy[2].GuyName + myBet.NotBetYet;
 
             myGuy[0].MyRadioButton.Text = "Joe";
             myGuy[1].MyRadioButton.Text = "Sam";
@@ -52,21 +56,74 @@ namespace DSED03ProjectHorseRace
         private void allRB_CheckedChanged(object sender, EventArgs e)
         {
 
-            RadioButton FakeRB = new RadioButton();
-            FakeRB = (RadioButton)sender;
+            // RadioButton FakeRB = new RadioButton();
+            myBet.FakeRB = (RadioButton)sender;
 
-            if (FakeRB.Checked)
+            if (myBet.FakeRB.Checked)
             {
                 panelBetting.Visible = true;
+                panelBets.Visible = true;
                 lblMaxBet.Visible = true;
-                int i = Convert.ToInt16(FakeRB.Tag);
+                int i = Convert.ToInt16(myBet.FakeRB.Tag);
                 lblBettor.Text = myGuy[i].GuyName;
-                lblMaxBet.Text = myGuy[i].GuyName + "'s max bet is $" + myGuy[i].MaxCash;
-                nudCash.Maximum = myGuy[i].MaxCash;
-                nudCash.Text = myGuy[i].MaxCash.ToString();
+                Cash(i);
                 nudHorseNumber.Minimum = 1;
                 nudHorseNumber.Maximum = 4;
+                btnBet.Text = "Place Bet for " + myGuy[i].GuyName;
+                btnBet.Enabled = true;
             }
+        }
+
+        private void MaxCashUsed()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (myGuy[i].MaxCash == 0)
+                {
+                    myGuy[i].MyRadioButton.Enabled = false;
+                    btnBet.Enabled = false;
+                }
+            }
+        }
+
+        private void Cash(int i)
+        {
+            lblMaxBet.Text = myGuy[i].GuyName + "'s max bet is $" + myGuy[i].MaxCash;
+            nudCash.Maximum = myGuy[i].MaxCash;
+            nudCash.Text = myGuy[i].MaxCash.ToString();
+
+            MaxCashUsed();
+        }
+
+        private void btnBet_Click(object sender, EventArgs e)
+        {
+            //myBet.FakeRB = sender as RadioButton;
+            //if (myBet.FakeRB.Checked)
+            //{
+            int i = Convert.ToInt16(myBet.FakeRB.Tag);
+            myGuy[i].AmountBet = Convert.ToInt32(nudCash.Text);
+            myGuy[i].MaxCash = myGuy[i].MaxCash - myGuy[i].AmountBet;
+
+
+
+            if (i == 0)
+            {
+                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Horse " + myGuy[0].HorseName + ".";
+            }
+            else if (i == 1)
+            {
+                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet;
+            }
+            else
+            {
+                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet;
+            }
+            Cash(i);
+
+
+
+            //}
+
         }
     }
 }
