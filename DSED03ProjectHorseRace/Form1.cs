@@ -16,6 +16,7 @@ namespace DSED03ProjectHorseRace
         //private Horse.Horse DefaultHorse = new Horse01();
 
         Punter[] myGuy = new Punter[3];
+        Punter[] myHorse = new Punter[4];
         Bet myBet = new Bet();
 
         public Form1()
@@ -37,8 +38,14 @@ namespace DSED03ProjectHorseRace
         {
             for (int i = 0; i < 3; i++)
             {
-                myGuy[i] = Factory.Factory.GetAGuy(i);
+                myGuy[i] = Factory.GetAGuy(i);
                 myGuy[i].GuyID = i;
+            }
+
+            for (int j = 0; j < 4; j++)
+            {
+                myHorse[j] = Factory.GetAHorse(j);
+                myHorse[j].HorseID = j;
             }
 
             myGuy[0].MyRadioButton = radioButton1;
@@ -97,33 +104,34 @@ namespace DSED03ProjectHorseRace
 
         private void btnBet_Click(object sender, EventArgs e)
         {
-            //myBet.FakeRB = sender as RadioButton;
-            //if (myBet.FakeRB.Checked)
-            //{
             int i = Convert.ToInt16(myBet.FakeRB.Tag);
             myGuy[i].AmountBet = Convert.ToInt32(nudCash.Text);
             myGuy[i].MaxCash = myGuy[i].MaxCash - myGuy[i].AmountBet;
 
+            AmountBetPerGuy(i);
+            Cash(i);
+        }
 
+        private void AmountBetPerGuy(int i)
+        {
+            myHorse[i].HorseID = Convert.ToInt32(nudHorseNumber.Text);
+            AmountBetText(i);
+        }
 
+        private void AmountBetText(int i)
+        {
             if (i == 0)
             {
-                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Horse " + myGuy[0].HorseName + ".";
+                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Horse " + myHorse[i].HorseName + ".";
             }
             else if (i == 1)
             {
-                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet;
+                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet + " on Horse " + myHorse[i].HorseName + ".";
             }
             else
             {
-                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet;
+                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet + " on Horse " + myHorse[i].HorseName + ".";
             }
-            Cash(i);
-
-
-
-            //}
-
         }
     }
 }

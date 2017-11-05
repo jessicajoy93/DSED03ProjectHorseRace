@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DSED03ProjectHorseRace;
 
-namespace DSED03ProjectHorseRace.Factory
+namespace DSED03ProjectHorseRace
 {
     static class Factory
     {

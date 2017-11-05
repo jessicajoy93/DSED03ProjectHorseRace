@@ -1,4 +1,6 @@
-﻿namespace DSED03ProjectHorseRace
+﻿using System.Windows.Forms;
+
+namespace DSED03ProjectHorseRace
 {
     partial class Form1
     {
@@ -197,7 +199,7 @@
             // 
             this.lblJoshua.Location = new System.Drawing.Point(13, 94);
             this.lblJoshua.Name = "lblJoshua";
-            this.lblJoshua.Size = new System.Drawing.Size(183, 17);
+            this.lblJoshua.Size = new System.Drawing.Size(388, 17);
             this.lblJoshua.TabIndex = 18;
             this.lblJoshua.Text = "label3";
             // 
@@ -205,7 +207,7 @@
             // 
             this.lblJoe.Location = new System.Drawing.Point(13, 48);
             this.lblJoe.Name = "lblJoe";
-            this.lblJoe.Size = new System.Drawing.Size(183, 17);
+            this.lblJoe.Size = new System.Drawing.Size(388, 17);
             this.lblJoe.TabIndex = 16;
             this.lblJoe.Text = "label3";
             // 
@@ -213,7 +215,7 @@
             // 
             this.lblSam.Location = new System.Drawing.Point(13, 71);
             this.lblSam.Name = "lblSam";
-            this.lblSam.Size = new System.Drawing.Size(183, 17);
+            this.lblSam.Size = new System.Drawing.Size(388, 17);
             this.lblSam.TabIndex = 17;
             this.lblSam.Text = "label3";
             // 
@@ -396,7 +398,7 @@
         private System.Windows.Forms.PictureBox pbRaceTrack;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRace;
-        private System.Windows.Forms.NumericUpDown nudHorseNumber;
+        private NumericUpDown nudHorseNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudCash;
         private System.Windows.Forms.Button btnBet;
