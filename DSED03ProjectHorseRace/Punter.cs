@@ -13,7 +13,6 @@ namespace DSED03ProjectHorseRace
         public string GuyName { get; set; }
         public int MaxCash { get; set; }
         public int AmountBet { get; set; }
-        public int Dog { get; set; }
 
         public RadioButton MyRadioButton { get; set; }
 

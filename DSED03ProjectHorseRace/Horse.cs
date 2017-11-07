@@ -12,7 +12,7 @@ namespace DSED03ProjectHorseRace
         public Horse01()
         {
             HorseID = 1;
-            HorseName = "Phar Lap";
+            HorseName = "Who Shot Thebarman";
         }
     }
 
@@ -21,7 +21,7 @@ namespace DSED03ProjectHorseRace
         public Horse02()
         {
             HorseID = 2;
-            HorseName = "Horse 2";
+            HorseName = "Wall Of Fire";
         }
     }
 
@@ -30,7 +30,7 @@ namespace DSED03ProjectHorseRace
         public Horse03()
         {
             HorseID = 3;
-            HorseName = "Horse 3";
+            HorseName = "Max Dynamite";
         }
     }
 
@@ -39,7 +39,7 @@ namespace DSED03ProjectHorseRace
         public Horse04()
         {
             HorseID = 4;
-            HorseName = "Horse 4";
+            HorseName = "Boom Time";
         }
     }
 }

@@ -9,6 +9,15 @@ namespace DSED03ProjectHorseRace
 {
     static class Factory
     {
+        private static Random Random = new Random();
+        //public static int Number = Random.Next(0, 10);
+        private static int newNumber;
+
+        public static int Number()
+        {
+            return newNumber = Random.Next(0, 20);
+        }
+
         // decides which class to instantiate
         public static Punter GetAGuy(int id)
         {

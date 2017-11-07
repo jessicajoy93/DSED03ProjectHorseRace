@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DSED03ProjectHorseRace;
+using Timer = System.Threading.Timer;
 
 namespace DSED03ProjectHorseRace
 {
@@ -19,6 +21,8 @@ namespace DSED03ProjectHorseRace
         Punter[] myHorse = new Punter[4];
         Bet myBet = new Bet();
 
+
+
         public Form1()
         {
             InitializeComponent();
@@ -26,13 +30,27 @@ namespace DSED03ProjectHorseRace
             LoadData();
         }
 
+        #region Transparent Background
         private void TransparentBackground()
         {
             //Makes Backgrounds transparent for pictureboxes
-            this.PointToScreen(panel1.Location);
-            panel1.Parent = pbRaceTrack;
-            panel1.BackColor = Color.Transparent;
+            this.PointToScreen(pbHorse1.Location);
+            pbHorse1.Parent = pbRaceTrack;
+            pbHorse1.BackColor = Color.Transparent;
+
+            this.PointToScreen(pbHorse2.Location);
+            pbHorse2.Parent = pbRaceTrack;
+            pbHorse2.BackColor = Color.Transparent;
+
+            this.PointToScreen(pbHorse3.Location);
+            pbHorse3.Parent = pbRaceTrack;
+            pbHorse3.BackColor = Color.Transparent;
+
+            this.PointToScreen(pbHorse4.Location);
+            pbHorse4.Parent = pbRaceTrack;
+            pbHorse4.BackColor = Color.Transparent;
         }
+        #endregion
 
         private void LoadData()
         {
@@ -114,24 +132,77 @@ namespace DSED03ProjectHorseRace
 
         private void AmountBetPerGuy(int i)
         {
-            myHorse[i].HorseID = Convert.ToInt32(nudHorseNumber.Text);
+
             AmountBetText(i);
         }
 
         private void AmountBetText(int i)
         {
+            int j = 0;
+            j = myHorse[j].HorseID = Convert.ToInt32(nudHorseNumber.Text) - 1;
+            //j = myHorse[j].HorseID;
             if (i == 0)
             {
-                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Horse " + myHorse[i].HorseName + ".";
+                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Horse " + myHorse[j].HorseName + ".";
             }
             else if (i == 1)
             {
-                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet + " on Horse " + myHorse[i].HorseName + ".";
+                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet + " on Horse " + myHorse[j].HorseName + ".";
             }
             else
             {
-                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet + " on Horse " + myHorse[i].HorseName + ".";
+                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet + " on Horse " + myHorse[j].HorseName + ".";
             }
+            btnRace.Visible = true;
+        }
+
+        private void btnRace_Click(object sender, EventArgs e)
+        {
+            int formWidth = Form1.ActiveForm.Width - pbHorse1.Width - 15;
+            while (pbHorse1.Location.X < formWidth && pbHorse2.Location.X < formWidth && pbHorse3.Location.X < formWidth && pbHorse4.Location.X < formWidth)
+            {
+                pbHorse1.Location = new Point(pbHorse1.Location.X + Factory.Number(), pbHorse1.Location.Y);
+                pbHorse2.Location = new Point(pbHorse2.Location.X + Factory.Number(), pbHorse2.Location.Y);
+                pbHorse3.Location = new Point(pbHorse3.Location.X + Factory.Number(), pbHorse3.Location.Y);
+                pbHorse4.Location = new Point(pbHorse4.Location.X + Factory.Number(), pbHorse4.Location.Y);
+                Application.DoEvents();
+            }
+
+            for (int i = 0; i < 98; i++)
+            {
+
+
+
+                //Thread.Sleep(100);
+            }
+
+            btnRace.Visible = false;
+            btnBet.Visible = false;
+            btnNewRace.Visible = true;
+
+            //pbHorse1.Location = new Point(pbHorse1.Location.X + Factory.Number(), pbHorse1.Location.Y);
+            //pbHorse2.Location = new Point(pbHorse2.Location.X + Factory.Number(), pbHorse2.Location.Y);
+        }
+
+        private void btnNewRace_Click(object sender, EventArgs e)
+        {
+            LoadData();
+            var pbHorse1Location = pbHorse1.Location;
+            pbHorse1.Location = new Point(pbHorse1Location.X = 3, pbHorse1.Location.Y);
+
+            var pbHorse2Location = pbHorse2.Location;
+            pbHorse2.Location = new Point(pbHorse2Location.X = 3, pbHorse2.Location.Y);
+
+            var pbHorse3Location = pbHorse3.Location;
+            pbHorse3.Location = new Point(pbHorse3Location.X = 3, pbHorse3.Location.Y);
+
+            var pbHorse4Location = pbHorse4.Location;
+            pbHorse4.Location = new Point(pbHorse4Location.X = 3, pbHorse4.Location.Y);
+
+            //btnRace.Visible = true;
+            btnBet.Visible = true;
+            btnNewRace.Visible = false;
         }
     }
 }
+
