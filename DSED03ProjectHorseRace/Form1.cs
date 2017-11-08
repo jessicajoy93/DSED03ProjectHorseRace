@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DSED03ProjectHorseRace;
-using Timer = System.Threading.Timer;
 
 namespace DSED03ProjectHorseRace
 {
@@ -18,8 +17,8 @@ namespace DSED03ProjectHorseRace
         //private Horse.Horse DefaultHorse = new Horse01();
 
         Punter[] myGuy = new Punter[3];
-        Punter[] myHorse = new Punter[4];
-        Bet myBet = new Bet();
+        Tortoise[] myTortoise = new Tortoise[4];
+        Property myProperty = new Property();
 
 
 
@@ -34,170 +33,227 @@ namespace DSED03ProjectHorseRace
         private void TransparentBackground()
         {
             //Makes Backgrounds transparent for pictureboxes
-            this.PointToScreen(pbHorse1.Location);
-            pbHorse1.Parent = pbRaceTrack;
-            pbHorse1.BackColor = Color.Transparent;
+            this.PointToScreen(pb1.Location);
+            pb1.Parent = pbRaceTrack;
+            pb1.BackColor = Color.Transparent;
 
-            this.PointToScreen(pbHorse2.Location);
-            pbHorse2.Parent = pbRaceTrack;
-            pbHorse2.BackColor = Color.Transparent;
+            this.PointToScreen(pb2.Location);
+            pb2.Parent = pbRaceTrack;
+            pb2.BackColor = Color.Transparent;
 
-            this.PointToScreen(pbHorse3.Location);
-            pbHorse3.Parent = pbRaceTrack;
-            pbHorse3.BackColor = Color.Transparent;
+            this.PointToScreen(pb3.Location);
+            pb3.Parent = pbRaceTrack;
+            pb3.BackColor = Color.Transparent;
 
-            this.PointToScreen(pbHorse4.Location);
-            pbHorse4.Parent = pbRaceTrack;
-            pbHorse4.BackColor = Color.Transparent;
+            this.PointToScreen(pb4.Location);
+            pb4.Parent = pbRaceTrack;
+            pb4.BackColor = Color.Transparent;
         }
         #endregion
 
         private void LoadData()
         {
-            for (int i = 0; i < 3; i++)
+            for (myProperty.Guy = 0; myProperty.Guy < 3; myProperty.Guy++)
             {
-                myGuy[i] = Factory.GetAGuy(i);
-                myGuy[i].GuyID = i;
+                myGuy[myProperty.Guy] = Factory.GetAGuy(myProperty.Guy);
+                myGuy[myProperty.Guy].GuyID = myProperty.Guy;
             }
 
-            for (int j = 0; j < 4; j++)
-            {
-                myHorse[j] = Factory.GetAHorse(j);
-                myHorse[j].HorseID = j;
-            }
+            //for (int j = 0; j < 4; j++)
+            //{
+            //    myHorse[j] = Factory.GetAHorse(j);
+            //    myHorse[j].HorseID = j;
+            //}
 
-            myGuy[0].MyRadioButton = radioButton1;
-            lblJoe.Text = myGuy[0].GuyName + myBet.NotBetYet;
-            myGuy[1].MyRadioButton = radioButton2;
-            lblSam.Text = myGuy[1].GuyName + myBet.NotBetYet;
-            myGuy[2].MyRadioButton = radioButton3;
-            lblJoshua.Text = myGuy[2].GuyName + myBet.NotBetYet;
+            GuyNotBetYet();
 
             myGuy[0].MyRadioButton.Text = "Joe";
             myGuy[1].MyRadioButton.Text = "Sam";
             myGuy[2].MyRadioButton.Text = "Joshua";
+
+            myTortoise[0] = new Tortoise() { TortoiseID = 1, Name = "Who Shot Thebarman" };
+            myTortoise[1] = new Tortoise() { TortoiseID = 2, Name = "Wall Of Fire" };
+            myTortoise[2] = new Tortoise() { TortoiseID = 3, Name = "Max Dynamite" };
+            myTortoise[3] = new Tortoise() { TortoiseID = 4, Name = "Boom Time" };
+
+            myTortoise[0].MyPictureBox = pb1;
+            myTortoise[1].MyPictureBox = pb2;
+            myTortoise[2].MyPictureBox = pb3;
+            myTortoise[3].MyPictureBox = pb4;
+
+            // will give me how many tortoises I have
+            foreach (var id in myTortoise)
+            {
+                if (Factory.TortoiseCount < id.TortoiseID)
+                {
+                    Factory.TortoiseCount = id.TortoiseID;
+                }
+                Factory.TortoiseCount += 1;
+            }
+        }
+
+        private void GuyNotBetYet()
+        {
+            myGuy[0].MyRadioButton = radioButton1;
+            lblJoe.Text = myGuy[0].GuyName + myProperty.NotBetYet;
+            myGuy[1].MyRadioButton = radioButton2;
+            lblSam.Text = myGuy[1].GuyName + myProperty.NotBetYet;
+            myGuy[2].MyRadioButton = radioButton3;
+            lblJoshua.Text = myGuy[2].GuyName + myProperty.NotBetYet;
         }
 
         private void allRB_CheckedChanged(object sender, EventArgs e)
         {
 
             // RadioButton FakeRB = new RadioButton();
-            myBet.FakeRB = (RadioButton)sender;
+            myProperty.FakeRB = (RadioButton)sender;
 
-            if (myBet.FakeRB.Checked)
+            if (myProperty.FakeRB.Checked)
             {
                 panelBetting.Visible = true;
                 panelBets.Visible = true;
                 lblMaxBet.Visible = true;
-                int i = Convert.ToInt16(myBet.FakeRB.Tag);
-                lblBettor.Text = myGuy[i].GuyName;
-                Cash(i);
-                nudHorseNumber.Minimum = 1;
-                nudHorseNumber.Maximum = 4;
-                btnBet.Text = "Place Bet for " + myGuy[i].GuyName;
+                myProperty.Guy = Convert.ToInt16(myProperty.FakeRB.Tag);
+                lblBettor.Text = myGuy[myProperty.Guy].GuyName;
+                Cash();
+                nudTortoiseNumber.Minimum = 1;
+                nudTortoiseNumber.Maximum = 4;
+                btnBet.Text = "Place Bet for " + lblBettor.Text;// myGuy[myProperty.Guy].GuyName;
                 btnBet.Enabled = true;
             }
         }
 
         private void MaxCashUsed()
         {
-            for (int i = 0; i < 3; i++)
+            for (myProperty.Guy = 0; myProperty.Guy < 3; myProperty.Guy++)
             {
-                if (myGuy[i].MaxCash == 0)
+                if (myGuy[myProperty.Guy].MaxCash == 0)
                 {
-                    myGuy[i].MyRadioButton.Enabled = false;
+                    myGuy[myProperty.Guy].MyRadioButton.Enabled = false;
                     btnBet.Enabled = false;
                 }
             }
         }
 
-        private void Cash(int i)
+        private void Cash()
         {
-            lblMaxBet.Text = myGuy[i].GuyName + "'s max bet is $" + myGuy[i].MaxCash;
-            nudCash.Maximum = myGuy[i].MaxCash;
-            nudCash.Text = myGuy[i].MaxCash.ToString();
+            lblMaxBet.Text = myGuy[myProperty.Guy].GuyName + "'s max bet is $" + myGuy[myProperty.Guy].MaxCash;
+            nudCash.Maximum = myGuy[myProperty.Guy].MaxCash;
+            nudCash.Text = myGuy[myProperty.Guy].MaxCash.ToString();
 
             MaxCashUsed();
         }
 
         private void btnBet_Click(object sender, EventArgs e)
         {
-            int i = Convert.ToInt16(myBet.FakeRB.Tag);
-            myGuy[i].AmountBet = Convert.ToInt32(nudCash.Text);
-            myGuy[i].MaxCash = myGuy[i].MaxCash - myGuy[i].AmountBet;
+            myProperty.Guy = Convert.ToInt16(myProperty.FakeRB.Tag);
+            myGuy[myProperty.Guy].AmountBet = Convert.ToInt32(nudCash.Text);
+            myGuy[myProperty.Guy].MaxCash = myGuy[myProperty.Guy].MaxCash - myGuy[myProperty.Guy].AmountBet;
 
-            AmountBetPerGuy(i);
-            Cash(i);
+            AmountBetText();
+            Cash();
         }
 
-        private void AmountBetPerGuy(int i)
+        private void AmountBetText()
         {
-
-            AmountBetText(i);
-        }
-
-        private void AmountBetText(int i)
-        {
-            int j = 0;
-            j = myHorse[j].HorseID = Convert.ToInt32(nudHorseNumber.Text) - 1;
-            //j = myHorse[j].HorseID;
-            if (i == 0)
+            myProperty.Tortoise = myTortoise[myProperty.Tortoise].TortoiseID = Convert.ToInt32(nudTortoiseNumber.Text) - 1;
+            if (myProperty.Guy == 0)
             {
-                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Horse " + myHorse[j].HorseName + ".";
+                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Tortoise " + myTortoise[myProperty.Tortoise].Name + ".";
             }
-            else if (i == 1)
+            else if (myProperty.Guy == 1)
             {
-                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet + " on Horse " + myHorse[j].HorseName + ".";
+                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet + " on Tortoise " + myTortoise[myProperty.Tortoise].Name + ".";
+
             }
             else
             {
-                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet + " on Horse " + myHorse[j].HorseName + ".";
+                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet + " on Tortoise " + myTortoise[myProperty.Tortoise].Name + ".";
             }
             btnRace.Visible = true;
         }
 
         private void btnRace_Click(object sender, EventArgs e)
         {
-            int formWidth = Form1.ActiveForm.Width - pbHorse1.Width - 15;
-            while (pbHorse1.Location.X < formWidth && pbHorse2.Location.X < formWidth && pbHorse3.Location.X < formWidth && pbHorse4.Location.X < formWidth)
+            StartRace();
+
+        }
+
+        private void StartRace()
+        {
+            Factory.RaceTrackLength = Form1.ActiveForm.Width - pb1.Width - 15;
+
+            while (myTortoise[myProperty.Tortoise].Run() < Factory.RaceTrackLength)
             {
-                pbHorse1.Location = new Point(pbHorse1.Location.X + Factory.Number(), pbHorse1.Location.Y);
-                pbHorse2.Location = new Point(pbHorse2.Location.X + Factory.Number(), pbHorse2.Location.Y);
-                pbHorse3.Location = new Point(pbHorse3.Location.X + Factory.Number(), pbHorse3.Location.Y);
-                pbHorse4.Location = new Point(pbHorse4.Location.X + Factory.Number(), pbHorse4.Location.Y);
-                Application.DoEvents();
+                myTortoise[0].Run();
+                myTortoise[1].Run();
+                myTortoise[2].Run();
+                myTortoise[3].Run();
             }
 
-            for (int i = 0; i < 98; i++)
-            {
+            //while (
+            //    pb1.Location.X < Factory.RaceTrackLength &&
+            //    pb2.Location.X < Factory.RaceTrackLength &&
+            //    pb3.Location.X < Factory.RaceTrackLength &&
+            //    pb4.Location.X < Factory.RaceTrackLength
+            //    )
+            //{
+            //    //for (myProperty.Tortoise = 0; myProperty.Tortoise < Factory.TortoiseCount; myProperty.Tortoise++)
 
 
+            //    pb1.Location = new Point(pb1.Location.X + Factory.Number(), pb1.Location.Y);
+            //    pb2.Location = new Point(pb2.Location.X + Factory.Number(), pb2.Location.Y);
+            //    pb3.Location = new Point(pb3.Location.X + Factory.Number(), pb3.Location.Y);
+            //    pb4.Location = new Point(pb4.Location.X + Factory.Number(), pb4.Location.Y);
+            //    Application.DoEvents();
 
-                //Thread.Sleep(100);
-            }
+            //}
+
+            //while (pb1.Location.X < Factory.FormWidth && pb2.Location.X < Factory.FormWidth && pb3.Location.X < Factory.FormWidth && pb4.Location.X < Factory.FormWidth)
+            //{
+
+
+            //}
 
             btnRace.Visible = false;
             btnBet.Visible = false;
             btnNewRace.Visible = true;
 
-            //pbHorse1.Location = new Point(pbHorse1.Location.X + Factory.Number(), pbHorse1.Location.Y);
-            //pbHorse2.Location = new Point(pbHorse2.Location.X + Factory.Number(), pbHorse2.Location.Y);
+            //if (pbHorse1.Location.X >= Factory.FormWidth)
+            //{
+            //    Factory.HorseWinner = 0;
+            //}
+            //else if (pbHorse2.Location.X >= Factory.FormWidth)
+            //{
+            //    Factory.HorseWinner = 1;
+            //}
+            //else if (pbHorse3.Location.X >= Factory.FormWidth)
+            //{
+            //    Factory.HorseWinner = 2;
+            //}
+            //else if (pbHorse4.Location.X >= Factory.FormWidth)
+            //{
+            //    Factory.HorseWinner = 3;
+            //}
+            //MessageBox.Show("Horse #" + Factory.HorseWinner);
         }
 
         private void btnNewRace_Click(object sender, EventArgs e)
         {
-            LoadData();
-            var pbHorse1Location = pbHorse1.Location;
-            pbHorse1.Location = new Point(pbHorse1Location.X = 3, pbHorse1.Location.Y);
+            // LoadData();
+            GuyNotBetYet();
 
-            var pbHorse2Location = pbHorse2.Location;
-            pbHorse2.Location = new Point(pbHorse2Location.X = 3, pbHorse2.Location.Y);
+            var pbHorse1Location = pb1.Location;
+            pb1.Location = new Point(pbHorse1Location.X = 3, pb1.Location.Y);
 
-            var pbHorse3Location = pbHorse3.Location;
-            pbHorse3.Location = new Point(pbHorse3Location.X = 3, pbHorse3.Location.Y);
+            var pbHorse2Location = pb2.Location;
+            pb2.Location = new Point(pbHorse2Location.X = 3, pb2.Location.Y);
 
-            var pbHorse4Location = pbHorse4.Location;
-            pbHorse4.Location = new Point(pbHorse4Location.X = 3, pbHorse4.Location.Y);
+            var pbHorse3Location = pb3.Location;
+            pb3.Location = new Point(pbHorse3Location.X = 3, pb3.Location.Y);
+
+            var pbHorse4Location = pb4.Location;
+            pb4.Location = new Point(pbHorse4Location.X = 3, pb4.Location.Y);
 
             //btnRace.Visible = true;
             btnBet.Visible = true;

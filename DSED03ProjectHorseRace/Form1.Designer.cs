@@ -30,11 +30,12 @@ namespace DSED03ProjectHorseRace
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pbHorse4 = new System.Windows.Forms.PictureBox();
-            this.pbHorse1 = new System.Windows.Forms.PictureBox();
-            this.pbHorse3 = new System.Windows.Forms.PictureBox();
-            this.pbHorse2 = new System.Windows.Forms.PictureBox();
+            this.pb4 = new System.Windows.Forms.PictureBox();
+            this.pb1 = new System.Windows.Forms.PictureBox();
+            this.pb3 = new System.Windows.Forms.PictureBox();
+            this.pb2 = new System.Windows.Forms.PictureBox();
             this.pbRaceTrack = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -56,16 +57,15 @@ namespace DSED03ProjectHorseRace
             this.btnBet = new System.Windows.Forms.Button();
             this.nudCash = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.nudHorseNumber = new System.Windows.Forms.NumericUpDown();
-            this.pbFinishLine = new System.Windows.Forms.PictureBox();
+            this.nudTortoiseNumber = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRaceTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -79,8 +79,7 @@ namespace DSED03ProjectHorseRace
             this.panelBets.SuspendLayout();
             this.panelBetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCash)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHorseNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFinishLine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTortoiseNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -93,11 +92,10 @@ namespace DSED03ProjectHorseRace
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.pbHorse4);
-            this.splitContainer1.Panel1.Controls.Add(this.pbHorse1);
-            this.splitContainer1.Panel1.Controls.Add(this.pbHorse3);
-            this.splitContainer1.Panel1.Controls.Add(this.pbHorse2);
-            this.splitContainer1.Panel1.Controls.Add(this.pbFinishLine);
+            this.splitContainer1.Panel1.Controls.Add(this.pb4);
+            this.splitContainer1.Panel1.Controls.Add(this.pb1);
+            this.splitContainer1.Panel1.Controls.Add(this.pb3);
+            this.splitContainer1.Panel1.Controls.Add(this.pb2);
             this.splitContainer1.Panel1.Controls.Add(this.pbRaceTrack);
             // 
             // splitContainer1.Panel2
@@ -107,66 +105,66 @@ namespace DSED03ProjectHorseRace
             this.splitContainer1.SplitterDistance = 526;
             this.splitContainer1.TabIndex = 2;
             // 
-            // pbHorse4
+            // pb4
             // 
-            this.pbHorse4.BackColor = System.Drawing.Color.Transparent;
-            this.pbHorse4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbHorse4.Image = global::DSED03ProjectHorseRace.Resource1.horse;
-            this.pbHorse4.InitialImage = null;
-            this.pbHorse4.Location = new System.Drawing.Point(3, 292);
-            this.pbHorse4.Name = "pbHorse4";
-            this.pbHorse4.Size = new System.Drawing.Size(109, 72);
-            this.pbHorse4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbHorse4.TabIndex = 2;
-            this.pbHorse4.TabStop = false;
-            this.pbHorse4.Tag = "Horse4";
+            this.pb4.BackColor = System.Drawing.Color.Transparent;
+            this.pb4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb4.Image = ((System.Drawing.Image)(resources.GetObject("pb4.Image")));
+            this.pb4.InitialImage = null;
+            this.pb4.Location = new System.Drawing.Point(3, 294);
+            this.pb4.Name = "pb4";
+            this.pb4.Size = new System.Drawing.Size(80, 31);
+            this.pb4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb4.TabIndex = 2;
+            this.pb4.TabStop = false;
+            this.pb4.Tag = "4";
             // 
-            // pbHorse1
+            // pb1
             // 
-            this.pbHorse1.BackColor = System.Drawing.Color.Transparent;
-            this.pbHorse1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbHorse1.Image = global::DSED03ProjectHorseRace.Resource1.horse;
-            this.pbHorse1.InitialImage = null;
-            this.pbHorse1.Location = new System.Drawing.Point(3, 73);
-            this.pbHorse1.Name = "pbHorse1";
-            this.pbHorse1.Size = new System.Drawing.Size(109, 72);
-            this.pbHorse1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbHorse1.TabIndex = 1;
-            this.pbHorse1.TabStop = false;
-            this.pbHorse1.Tag = "Horse1";
+            this.pb1.BackColor = System.Drawing.Color.Transparent;
+            this.pb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb1.Image = ((System.Drawing.Image)(resources.GetObject("pb1.Image")));
+            this.pb1.InitialImage = null;
+            this.pb1.Location = new System.Drawing.Point(3, 195);
+            this.pb1.Name = "pb1";
+            this.pb1.Size = new System.Drawing.Size(80, 31);
+            this.pb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb1.TabIndex = 1;
+            this.pb1.TabStop = false;
+            this.pb1.Tag = "1";
             // 
-            // pbHorse3
+            // pb3
             // 
-            this.pbHorse3.BackColor = System.Drawing.Color.Transparent;
-            this.pbHorse3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbHorse3.Image = global::DSED03ProjectHorseRace.Resource1.horse;
-            this.pbHorse3.InitialImage = null;
-            this.pbHorse3.Location = new System.Drawing.Point(3, 219);
-            this.pbHorse3.Name = "pbHorse3";
-            this.pbHorse3.Size = new System.Drawing.Size(109, 72);
-            this.pbHorse3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbHorse3.TabIndex = 3;
-            this.pbHorse3.TabStop = false;
-            this.pbHorse3.Tag = "Horse3";
+            this.pb3.BackColor = System.Drawing.Color.Transparent;
+            this.pb3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb3.Image = ((System.Drawing.Image)(resources.GetObject("pb3.Image")));
+            this.pb3.InitialImage = null;
+            this.pb3.Location = new System.Drawing.Point(3, 260);
+            this.pb3.Name = "pb3";
+            this.pb3.Size = new System.Drawing.Size(80, 31);
+            this.pb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb3.TabIndex = 3;
+            this.pb3.TabStop = false;
+            this.pb3.Tag = "3";
             // 
-            // pbHorse2
+            // pb2
             // 
-            this.pbHorse2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbHorse2.BackColor = System.Drawing.Color.Transparent;
-            this.pbHorse2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbHorse2.Image = global::DSED03ProjectHorseRace.Resource1.horse;
-            this.pbHorse2.InitialImage = null;
-            this.pbHorse2.Location = new System.Drawing.Point(3, 146);
-            this.pbHorse2.Name = "pbHorse2";
-            this.pbHorse2.Size = new System.Drawing.Size(109, 72);
-            this.pbHorse2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbHorse2.TabIndex = 4;
-            this.pbHorse2.TabStop = false;
-            this.pbHorse2.Tag = "Horse2";
+            this.pb2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pb2.BackColor = System.Drawing.Color.Transparent;
+            this.pb2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb2.Image = ((System.Drawing.Image)(resources.GetObject("pb2.Image")));
+            this.pb2.InitialImage = null;
+            this.pb2.Location = new System.Drawing.Point(3, 227);
+            this.pb2.Name = "pb2";
+            this.pb2.Size = new System.Drawing.Size(80, 31);
+            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb2.TabIndex = 4;
+            this.pb2.TabStop = false;
+            this.pb2.Tag = "2";
             // 
             // pbRaceTrack
             // 
-            this.pbRaceTrack.BackgroundImage = global::DSED03ProjectHorseRace.Resource1.track;
+            this.pbRaceTrack.BackgroundImage = global::DSED03ProjectHorseRace.Resource1.racetrack;
             this.pbRaceTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbRaceTrack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbRaceTrack.Location = new System.Drawing.Point(0, 0);
@@ -337,7 +335,7 @@ namespace DSED03ProjectHorseRace
             this.panelBetting.Controls.Add(this.btnBet);
             this.panelBetting.Controls.Add(this.nudCash);
             this.panelBetting.Controls.Add(this.label1);
-            this.panelBetting.Controls.Add(this.nudHorseNumber);
+            this.panelBetting.Controls.Add(this.nudTortoiseNumber);
             this.panelBetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBetting.Location = new System.Drawing.Point(0, 0);
             this.panelBetting.Name = "panelBetting";
@@ -396,33 +394,23 @@ namespace DSED03ProjectHorseRace
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 34);
+            this.label1.Location = new System.Drawing.Point(20, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
+            this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "bucks on horse number";
+            this.label1.Text = "bucks on tortoise number";
             // 
-            // nudHorseNumber
+            // nudTortoiseNumber
             // 
-            this.nudHorseNumber.Location = new System.Drawing.Point(152, 32);
-            this.nudHorseNumber.Name = "nudHorseNumber";
-            this.nudHorseNumber.Size = new System.Drawing.Size(120, 20);
-            this.nudHorseNumber.TabIndex = 8;
-            this.nudHorseNumber.Value = new decimal(new int[] {
+            this.nudTortoiseNumber.Location = new System.Drawing.Point(152, 32);
+            this.nudTortoiseNumber.Name = "nudTortoiseNumber";
+            this.nudTortoiseNumber.Size = new System.Drawing.Size(120, 20);
+            this.nudTortoiseNumber.TabIndex = 8;
+            this.nudTortoiseNumber.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            // 
-            // pbFinishLine
-            // 
-            this.pbFinishLine.Image = global::DSED03ProjectHorseRace.Resource1.finishline;
-            this.pbFinishLine.Location = new System.Drawing.Point(1089, 73);
-            this.pbFinishLine.Name = "pbFinishLine";
-            this.pbFinishLine.Size = new System.Drawing.Size(62, 288);
-            this.pbFinishLine.TabIndex = 5;
-            this.pbFinishLine.TabStop = false;
-            this.pbFinishLine.Visible = false;
             // 
             // Form1
             // 
@@ -436,10 +424,10 @@ namespace DSED03ProjectHorseRace
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHorse2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRaceTrack)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -456,8 +444,7 @@ namespace DSED03ProjectHorseRace
             this.panelBetting.ResumeLayout(false);
             this.panelBetting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCash)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHorseNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFinishLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTortoiseNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,14 +452,14 @@ namespace DSED03ProjectHorseRace
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.PictureBox pbHorse1;
-        private System.Windows.Forms.PictureBox pbHorse4;
-        private System.Windows.Forms.PictureBox pbHorse3;
-        private System.Windows.Forms.PictureBox pbHorse2;
+        private System.Windows.Forms.PictureBox pb1;
+        private System.Windows.Forms.PictureBox pb4;
+        private System.Windows.Forms.PictureBox pb3;
+        private System.Windows.Forms.PictureBox pb2;
         private System.Windows.Forms.PictureBox pbRaceTrack;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRace;
-        private NumericUpDown nudHorseNumber;
+        private NumericUpDown nudTortoiseNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudCash;
         private System.Windows.Forms.Button btnBet;
@@ -491,7 +478,6 @@ namespace DSED03ProjectHorseRace
         private SplitContainer splitContainer3;
         private Panel panel2;
         private Button btnNewRace;
-        private PictureBox pbFinishLine;
     }
 }
 
