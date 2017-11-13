@@ -14,13 +14,25 @@ namespace DSED03ProjectHorseRace
         public int TortoiseID { get; set; }
         public string Name { get; set; }
         public PictureBox MyPictureBox { get; set; }
+        private int newDistance = 29;
 
-        public bool Run()
+
+        public void UpdatePostition()
         {
-            Point p = MyPictureBox.Location;
-            p.X += Factory.Number();
-            MyPictureBox.Location = p;
-            return true;
+            MyPictureBox.Left = newDistance;
         }
+        public void StartingPostition()
+        {
+            newDistance = 29;
+            UpdatePostition();
+        }
+        public void Run()
+        {
+            newDistance += Factory.Number();
+            UpdatePostition();
+        }
+
+
+
     }
 }

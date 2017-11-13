@@ -59,6 +59,7 @@ namespace DSED03ProjectHorseRace
                 myGuy[myProperty.Guy].GuyID = myProperty.Guy;
             }
 
+
             //for (int j = 0; j < 4; j++)
             //{
             //    myHorse[j] = Factory.GetAHorse(j);
@@ -80,6 +81,7 @@ namespace DSED03ProjectHorseRace
             myTortoise[1].MyPictureBox = pb2;
             myTortoise[2].MyPictureBox = pb3;
             myTortoise[3].MyPictureBox = pb4;
+
 
             // will give me how many tortoises I have
             foreach (var id in myTortoise)
@@ -183,59 +185,34 @@ namespace DSED03ProjectHorseRace
         {
             Factory.RaceTrackLength = Form1.ActiveForm.Width - pb1.Width - 15;
 
-            while (myTortoise[myProperty.Tortoise].Run() < Factory.RaceTrackLength)
+            do
             {
-                myTortoise[0].Run();
-                myTortoise[1].Run();
-                myTortoise[2].Run();
-                myTortoise[3].Run();
-            }
+                for (myProperty.Tortoise = 0; myProperty.Tortoise < 4; myProperty.Tortoise++)
+                {
+                    myTortoise[myProperty.Tortoise].Run();
+                    Application.DoEvents();
+                    if (myTortoise[myProperty.Tortoise].MyPictureBox.Location.X >= Factory.RaceTrackLength)
+                    {
 
-            //while (
-            //    pb1.Location.X < Factory.RaceTrackLength &&
-            //    pb2.Location.X < Factory.RaceTrackLength &&
-            //    pb3.Location.X < Factory.RaceTrackLength &&
-            //    pb4.Location.X < Factory.RaceTrackLength
-            //    )
-            //{
-            //    //for (myProperty.Tortoise = 0; myProperty.Tortoise < Factory.TortoiseCount; myProperty.Tortoise++)
+                        myProperty.TortoiseWinner = myTortoise[myProperty.Tortoise].TortoiseID;
+                        MessageBox.Show("Winner is Tortoise #" + myProperty.TortoiseWinner);
+                    }
+                }
 
+            } while (pb1.Location.X < Factory.RaceTrackLength &&
+                     pb2.Location.X < Factory.RaceTrackLength &&
+                     pb3.Location.X < Factory.RaceTrackLength &&
+                     pb4.Location.X < Factory.RaceTrackLength
+            );
 
-            //    pb1.Location = new Point(pb1.Location.X + Factory.Number(), pb1.Location.Y);
-            //    pb2.Location = new Point(pb2.Location.X + Factory.Number(), pb2.Location.Y);
-            //    pb3.Location = new Point(pb3.Location.X + Factory.Number(), pb3.Location.Y);
-            //    pb4.Location = new Point(pb4.Location.X + Factory.Number(), pb4.Location.Y);
-            //    Application.DoEvents();
-
-            //}
-
-            //while (pb1.Location.X < Factory.FormWidth && pb2.Location.X < Factory.FormWidth && pb3.Location.X < Factory.FormWidth && pb4.Location.X < Factory.FormWidth)
-            //{
-
-
-            //}
 
             btnRace.Visible = false;
             btnBet.Visible = false;
             btnNewRace.Visible = true;
 
-            //if (pbHorse1.Location.X >= Factory.FormWidth)
-            //{
-            //    Factory.HorseWinner = 0;
-            //}
-            //else if (pbHorse2.Location.X >= Factory.FormWidth)
-            //{
-            //    Factory.HorseWinner = 1;
-            //}
-            //else if (pbHorse3.Location.X >= Factory.FormWidth)
-            //{
-            //    Factory.HorseWinner = 2;
-            //}
-            //else if (pbHorse4.Location.X >= Factory.FormWidth)
-            //{
-            //    Factory.HorseWinner = 3;
-            //}
-            //MessageBox.Show("Horse #" + Factory.HorseWinner);
+
+
+
         }
 
         private void btnNewRace_Click(object sender, EventArgs e)
@@ -244,16 +221,16 @@ namespace DSED03ProjectHorseRace
             GuyNotBetYet();
 
             var pbHorse1Location = pb1.Location;
-            pb1.Location = new Point(pbHorse1Location.X = 3, pb1.Location.Y);
+            pb1.Location = new Point(pbHorse1Location.X = 29, pb1.Location.Y);
 
             var pbHorse2Location = pb2.Location;
-            pb2.Location = new Point(pbHorse2Location.X = 3, pb2.Location.Y);
+            pb2.Location = new Point(pbHorse2Location.X = 29, pb2.Location.Y);
 
             var pbHorse3Location = pb3.Location;
-            pb3.Location = new Point(pbHorse3Location.X = 3, pb3.Location.Y);
+            pb3.Location = new Point(pbHorse3Location.X = 29, pb3.Location.Y);
 
             var pbHorse4Location = pb4.Location;
-            pb4.Location = new Point(pbHorse4Location.X = 3, pb4.Location.Y);
+            pb4.Location = new Point(pbHorse4Location.X = 29, pb4.Location.Y);
 
             //btnRace.Visible = true;
             btnBet.Visible = true;

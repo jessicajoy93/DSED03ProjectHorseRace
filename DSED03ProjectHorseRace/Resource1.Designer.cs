@@ -93,6 +93,16 @@ namespace DSED03ProjectHorseRace {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap race {
+            get {
+                object obj = ResourceManager.GetObject("race", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap racetrack {
             get {
                 object obj = ResourceManager.GetObject("racetrack", resourceCulture);

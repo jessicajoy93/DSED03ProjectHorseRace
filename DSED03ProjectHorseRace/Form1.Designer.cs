@@ -32,11 +32,6 @@ namespace DSED03ProjectHorseRace
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pb4 = new System.Windows.Forms.PictureBox();
-            this.pb1 = new System.Windows.Forms.PictureBox();
-            this.pb3 = new System.Windows.Forms.PictureBox();
-            this.pb2 = new System.Windows.Forms.PictureBox();
-            this.pbRaceTrack = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -58,15 +53,15 @@ namespace DSED03ProjectHorseRace
             this.nudCash = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.nudTortoiseNumber = new System.Windows.Forms.NumericUpDown();
+            this.pb4 = new System.Windows.Forms.PictureBox();
+            this.pb1 = new System.Windows.Forms.PictureBox();
+            this.pb3 = new System.Windows.Forms.PictureBox();
+            this.pb2 = new System.Windows.Forms.PictureBox();
+            this.pbRaceTrack = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRaceTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -80,6 +75,11 @@ namespace DSED03ProjectHorseRace
             this.panelBetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTortoiseNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRaceTrack)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -104,74 +104,6 @@ namespace DSED03ProjectHorseRace
             this.splitContainer1.Size = new System.Drawing.Size(1151, 738);
             this.splitContainer1.SplitterDistance = 526;
             this.splitContainer1.TabIndex = 2;
-            // 
-            // pb4
-            // 
-            this.pb4.BackColor = System.Drawing.Color.Transparent;
-            this.pb4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb4.Image = ((System.Drawing.Image)(resources.GetObject("pb4.Image")));
-            this.pb4.InitialImage = null;
-            this.pb4.Location = new System.Drawing.Point(3, 294);
-            this.pb4.Name = "pb4";
-            this.pb4.Size = new System.Drawing.Size(80, 31);
-            this.pb4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb4.TabIndex = 2;
-            this.pb4.TabStop = false;
-            this.pb4.Tag = "4";
-            // 
-            // pb1
-            // 
-            this.pb1.BackColor = System.Drawing.Color.Transparent;
-            this.pb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb1.Image = ((System.Drawing.Image)(resources.GetObject("pb1.Image")));
-            this.pb1.InitialImage = null;
-            this.pb1.Location = new System.Drawing.Point(3, 195);
-            this.pb1.Name = "pb1";
-            this.pb1.Size = new System.Drawing.Size(80, 31);
-            this.pb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb1.TabIndex = 1;
-            this.pb1.TabStop = false;
-            this.pb1.Tag = "1";
-            // 
-            // pb3
-            // 
-            this.pb3.BackColor = System.Drawing.Color.Transparent;
-            this.pb3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb3.Image = ((System.Drawing.Image)(resources.GetObject("pb3.Image")));
-            this.pb3.InitialImage = null;
-            this.pb3.Location = new System.Drawing.Point(3, 260);
-            this.pb3.Name = "pb3";
-            this.pb3.Size = new System.Drawing.Size(80, 31);
-            this.pb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb3.TabIndex = 3;
-            this.pb3.TabStop = false;
-            this.pb3.Tag = "3";
-            // 
-            // pb2
-            // 
-            this.pb2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pb2.BackColor = System.Drawing.Color.Transparent;
-            this.pb2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb2.Image = ((System.Drawing.Image)(resources.GetObject("pb2.Image")));
-            this.pb2.InitialImage = null;
-            this.pb2.Location = new System.Drawing.Point(3, 227);
-            this.pb2.Name = "pb2";
-            this.pb2.Size = new System.Drawing.Size(80, 31);
-            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb2.TabIndex = 4;
-            this.pb2.TabStop = false;
-            this.pb2.Tag = "2";
-            // 
-            // pbRaceTrack
-            // 
-            this.pbRaceTrack.BackgroundImage = global::DSED03ProjectHorseRace.Resource1.racetrack;
-            this.pbRaceTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbRaceTrack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbRaceTrack.Location = new System.Drawing.Point(0, 0);
-            this.pbRaceTrack.Name = "pbRaceTrack";
-            this.pbRaceTrack.Size = new System.Drawing.Size(1151, 526);
-            this.pbRaceTrack.TabIndex = 0;
-            this.pbRaceTrack.TabStop = false;
             // 
             // splitContainer2
             // 
@@ -412,6 +344,74 @@ namespace DSED03ProjectHorseRace
             0,
             0});
             // 
+            // pb4
+            // 
+            this.pb4.BackColor = System.Drawing.Color.Transparent;
+            this.pb4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb4.Image = ((System.Drawing.Image)(resources.GetObject("pb4.Image")));
+            this.pb4.InitialImage = null;
+            this.pb4.Location = new System.Drawing.Point(29, 262);
+            this.pb4.Name = "pb4";
+            this.pb4.Size = new System.Drawing.Size(80, 31);
+            this.pb4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb4.TabIndex = 2;
+            this.pb4.TabStop = false;
+            this.pb4.Tag = "4";
+            // 
+            // pb1
+            // 
+            this.pb1.BackColor = System.Drawing.Color.Transparent;
+            this.pb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb1.Image = ((System.Drawing.Image)(resources.GetObject("pb1.Image")));
+            this.pb1.InitialImage = null;
+            this.pb1.Location = new System.Drawing.Point(29, 164);
+            this.pb1.Name = "pb1";
+            this.pb1.Size = new System.Drawing.Size(80, 31);
+            this.pb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb1.TabIndex = 1;
+            this.pb1.TabStop = false;
+            this.pb1.Tag = "1";
+            // 
+            // pb3
+            // 
+            this.pb3.BackColor = System.Drawing.Color.Transparent;
+            this.pb3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb3.Image = ((System.Drawing.Image)(resources.GetObject("pb3.Image")));
+            this.pb3.InitialImage = null;
+            this.pb3.Location = new System.Drawing.Point(29, 228);
+            this.pb3.Name = "pb3";
+            this.pb3.Size = new System.Drawing.Size(80, 31);
+            this.pb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb3.TabIndex = 3;
+            this.pb3.TabStop = false;
+            this.pb3.Tag = "3";
+            // 
+            // pb2
+            // 
+            this.pb2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pb2.BackColor = System.Drawing.Color.Transparent;
+            this.pb2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pb2.Image = ((System.Drawing.Image)(resources.GetObject("pb2.Image")));
+            this.pb2.InitialImage = null;
+            this.pb2.Location = new System.Drawing.Point(29, 196);
+            this.pb2.Name = "pb2";
+            this.pb2.Size = new System.Drawing.Size(80, 31);
+            this.pb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb2.TabIndex = 4;
+            this.pb2.TabStop = false;
+            this.pb2.Tag = "2";
+            // 
+            // pbRaceTrack
+            // 
+            this.pbRaceTrack.BackgroundImage = global::DSED03ProjectHorseRace.Resource1.race;
+            this.pbRaceTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbRaceTrack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbRaceTrack.Location = new System.Drawing.Point(0, 0);
+            this.pbRaceTrack.Name = "pbRaceTrack";
+            this.pbRaceTrack.Size = new System.Drawing.Size(1151, 526);
+            this.pbRaceTrack.TabIndex = 0;
+            this.pbRaceTrack.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,11 +424,6 @@ namespace DSED03ProjectHorseRace
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pb4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRaceTrack)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -445,6 +440,11 @@ namespace DSED03ProjectHorseRace
             this.panelBetting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTortoiseNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRaceTrack)).EndInit();
             this.ResumeLayout(false);
 
         }

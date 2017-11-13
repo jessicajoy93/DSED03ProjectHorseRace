@@ -29,7 +29,7 @@ namespace DSED03ProjectHorseRace
 
         public static int Number()
         {
-            return newNumber = Random.Next(0, 4);
+            return newNumber = Random.Next(0, 10);
         }
 
 

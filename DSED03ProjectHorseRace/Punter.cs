@@ -17,6 +17,6 @@ namespace DSED03ProjectHorseRace
         public RadioButton MyRadioButton { get; set; }
 
 
-        public int HorseWinner { get; set; }
+
     }
 }

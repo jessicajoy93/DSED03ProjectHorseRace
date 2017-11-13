@@ -18,6 +18,6 @@ namespace DSED03ProjectHorseRace
         public int Tortoise { get; set; }
         public int Guy { get; set; }
 
-
+        public int TortoiseWinner { get; set; }
     }
 }
