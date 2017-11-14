@@ -9,26 +9,38 @@ using System.Windows.Forms;
 namespace DSED03ProjectHorseRace
 {
 
-    class Tortoise //: Punter
+    class Tortoise
     {
         public int TortoiseID { get; set; }
         public string Name { get; set; }
         public PictureBox MyPictureBox { get; set; }
+
         private int newDistance = 29;
 
 
         public void UpdatePostition()
         {
+            //moves the picture box to new postion
             MyPictureBox.Left = newDistance;
         }
         public void StartingPostition()
         {
+            // new distance of the tortoise
             newDistance = 29;
+            // current location
+            var location = MyPictureBox.Location;
+            // changes the current location to new location
+            location.X = newDistance;
+            //moves the picture box
+            MyPictureBox.Location = location;
+            //updates the postion
             UpdatePostition();
         }
         public void Run()
         {
+            //new distance + random move of 1, 2, 3, or 4 spaces
             newDistance += Factory.Number();
+            //updates the postion
             UpdatePostition();
         }
 

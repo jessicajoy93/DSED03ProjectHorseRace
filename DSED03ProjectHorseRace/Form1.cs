@@ -17,7 +17,7 @@ namespace DSED03ProjectHorseRace
         //private Horse.Horse DefaultHorse = new Horse01();
 
         Punter[] myGuy = new Punter[3];
-        Tortoise[] myTortoise = new Tortoise[4];
+        Tortoise[] myTortoise = new Tortoise[8];
         Property myProperty = new Property();
 
 
@@ -48,6 +48,22 @@ namespace DSED03ProjectHorseRace
             this.PointToScreen(pb4.Location);
             pb4.Parent = pbRaceTrack;
             pb4.BackColor = Color.Transparent;
+
+            this.PointToScreen(pb5.Location);
+            pb5.Parent = pbRaceTrack;
+            pb5.BackColor = Color.Transparent;
+
+            this.PointToScreen(pb6.Location);
+            pb6.Parent = pbRaceTrack;
+            pb6.BackColor = Color.Transparent;
+
+            this.PointToScreen(pb7.Location);
+            pb7.Parent = pbRaceTrack;
+            pb7.BackColor = Color.Transparent;
+
+            this.PointToScreen(pb8.Location);
+            pb8.Parent = pbRaceTrack;
+            pb8.BackColor = Color.Transparent;
         }
         #endregion
 
@@ -72,15 +88,23 @@ namespace DSED03ProjectHorseRace
             myGuy[1].MyRadioButton.Text = "Sam";
             myGuy[2].MyRadioButton.Text = "Joshua";
 
-            myTortoise[0] = new Tortoise() { TortoiseID = 1, Name = "Who Shot Thebarman" };
-            myTortoise[1] = new Tortoise() { TortoiseID = 2, Name = "Wall Of Fire" };
-            myTortoise[2] = new Tortoise() { TortoiseID = 3, Name = "Max Dynamite" };
-            myTortoise[3] = new Tortoise() { TortoiseID = 4, Name = "Boom Time" };
+            myTortoise[0] = new Tortoise() { TortoiseID = 1, Name = "Shell Shock" };
+            myTortoise[1] = new Tortoise() { TortoiseID = 2, Name = "MiShell" };
+            myTortoise[2] = new Tortoise() { TortoiseID = 3, Name = "Slowpoke" };
+            myTortoise[3] = new Tortoise() { TortoiseID = 4, Name = "Sally Monella" };
+            myTortoise[4] = new Tortoise() { TortoiseID = 5, Name = "Shelldon" };
+            myTortoise[5] = new Tortoise() { TortoiseID = 6, Name = "Voldetort" };
+            myTortoise[6] = new Tortoise() { TortoiseID = 7, Name = "Aristurtle" };
+            myTortoise[7] = new Tortoise() { TortoiseID = 8, Name = "Zippy" };
 
             myTortoise[0].MyPictureBox = pb1;
             myTortoise[1].MyPictureBox = pb2;
             myTortoise[2].MyPictureBox = pb3;
             myTortoise[3].MyPictureBox = pb4;
+            myTortoise[4].MyPictureBox = pb5;
+            myTortoise[5].MyPictureBox = pb6;
+            myTortoise[6].MyPictureBox = pb7;
+            myTortoise[7].MyPictureBox = pb8;
 
 
             // will give me how many tortoises I have
@@ -119,7 +143,7 @@ namespace DSED03ProjectHorseRace
                 lblBettor.Text = myGuy[myProperty.Guy].GuyName;
                 Cash();
                 nudTortoiseNumber.Minimum = 1;
-                nudTortoiseNumber.Maximum = 4;
+                nudTortoiseNumber.Maximum = Factory.TortoiseCount - 1;
                 btnBet.Text = "Place Bet for " + lblBettor.Text;// myGuy[myProperty.Guy].GuyName;
                 btnBet.Enabled = true;
             }
@@ -159,6 +183,7 @@ namespace DSED03ProjectHorseRace
         private void AmountBetText()
         {
             myProperty.Tortoise = myTortoise[myProperty.Tortoise].TortoiseID = Convert.ToInt32(nudTortoiseNumber.Text) - 1;
+            myGuy[myProperty.Guy].BettorTortoiseNum = myProperty.Tortoise;
             if (myProperty.Guy == 0)
             {
                 lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on Tortoise " + myTortoise[myProperty.Tortoise].Name + ".";
@@ -178,32 +203,44 @@ namespace DSED03ProjectHorseRace
         private void btnRace_Click(object sender, EventArgs e)
         {
             StartRace();
+            //IsWinner();
 
         }
 
         private void StartRace()
         {
-            Factory.RaceTrackLength = Form1.ActiveForm.Width - pb1.Width - 15;
-
-            do
+            Factory.RaceTrackLength = Form1.ActiveForm.Width - pb1.Width - (pb1.Width / 2);
+            while (pb1.Location.X < Factory.RaceTrackLength &&
+                                 pb2.Location.X < Factory.RaceTrackLength &&
+                                 pb3.Location.X < Factory.RaceTrackLength &&
+                                 pb4.Location.X < Factory.RaceTrackLength &&
+                                 pb5.Location.X < Factory.RaceTrackLength &&
+                                 pb6.Location.X < Factory.RaceTrackLength &&
+                                 pb7.Location.X < Factory.RaceTrackLength &&
+                                 pb8.Location.X < Factory.RaceTrackLength
+                        )
+            //do
             {
-                for (myProperty.Tortoise = 0; myProperty.Tortoise < 4; myProperty.Tortoise++)
+                for (myProperty.Tortoise = 0; myProperty.Tortoise < 8; myProperty.Tortoise++)
                 {
                     myTortoise[myProperty.Tortoise].Run();
                     Application.DoEvents();
                     if (myTortoise[myProperty.Tortoise].MyPictureBox.Location.X >= Factory.RaceTrackLength)
                     {
-
                         myProperty.TortoiseWinner = myTortoise[myProperty.Tortoise].TortoiseID;
-                        MessageBox.Show("Winner is Tortoise #" + myProperty.TortoiseWinner);
+                        if (myProperty.TortoiseWinner == 0)
+                        {
+                            myProperty.TortoiseWinner = 1;
+                        }
+
+                        //MessageBox.Show("Winner is Tortoise #" + myProperty.TortoiseWinner + " Name: " + myTortoise[myProperty.Tortoise].Name);
+                        lblWinner.Text = "Winner is Tortoise #" + myProperty.TortoiseWinner + " Name: " + myTortoise[myProperty.Tortoise].Name;
+                        NewMethod();
                     }
                 }
 
-            } while (pb1.Location.X < Factory.RaceTrackLength &&
-                     pb2.Location.X < Factory.RaceTrackLength &&
-                     pb3.Location.X < Factory.RaceTrackLength &&
-                     pb4.Location.X < Factory.RaceTrackLength
-            );
+            };
+
 
 
             btnRace.Visible = false;
@@ -215,22 +252,51 @@ namespace DSED03ProjectHorseRace
 
         }
 
-        private void btnNewRace_Click(object sender, EventArgs e)
+        private void NewMethod()
         {
-            // LoadData();
+            if (myGuy[0].BettorTortoiseNum == myProperty.TortoiseWinner - 1)
+            {
+                myProperty.isWinner = true;
+                myGuy[0].MaxCash += (myGuy[0].AmountBet * 2);
+            }
+            else if (myGuy[1].BettorTortoiseNum == myProperty.TortoiseWinner)
+            {
+                myProperty.isWinner = true;
+                myGuy[1].MaxCash += (myGuy[1].AmountBet * 2);
+            }
+            else if (myGuy[2].BettorTortoiseNum == myProperty.TortoiseWinner)
+            {
+                myProperty.isWinner = true;
+                myGuy[2].MaxCash += (myGuy[2].AmountBet * 2);
+            }
+        }
+
+        private void IsWinner()
+        {
+            if (myGuy[myProperty.Guy].BettorTortoiseNum == myProperty.TortoiseWinner)
+            {
+                myProperty.isWinner = true;
+                myGuy[myProperty.Guy].MaxCash += (myGuy[myProperty.Guy].AmountBet * 2);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnNewRace_Click(object sender, EventArgs e)
+        {//Moves all the Tortoises back to their starting positions
+            for (myProperty.Tortoise = 0; myProperty.Tortoise < 8; myProperty.Tortoise++)
+            {
+                myTortoise[myProperty.Tortoise].StartingPostition();
+            }
+            myProperty.Tortoise = 0;
+            //LoadData();
             GuyNotBetYet();
 
-            var pbHorse1Location = pb1.Location;
-            pb1.Location = new Point(pbHorse1Location.X = 29, pb1.Location.Y);
 
-            var pbHorse2Location = pb2.Location;
-            pb2.Location = new Point(pbHorse2Location.X = 29, pb2.Location.Y);
 
-            var pbHorse3Location = pb3.Location;
-            pb3.Location = new Point(pbHorse3Location.X = 29, pb3.Location.Y);
 
-            var pbHorse4Location = pb4.Location;
-            pb4.Location = new Point(pbHorse4Location.X = 29, pb4.Location.Y);
 
             //btnRace.Visible = true;
             btnBet.Visible = true;

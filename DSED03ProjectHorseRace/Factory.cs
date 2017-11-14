@@ -17,10 +17,8 @@ namespace DSED03ProjectHorseRace
 
         public static int FormWidth { get; set; }
 
-        public static int HorseWinner { get; set; }
+        //public static int TortoiseWinner { get; set; }
         public static int TortoiseCount { get; set; } = 0;
-
-        public static int StartingPosition { get; set; } = 3;
         public static int RaceTrackLength { get; set; }
         public static int Location { get; set; } = 0;
 
@@ -29,7 +27,7 @@ namespace DSED03ProjectHorseRace
 
         public static int Number()
         {
-            return newNumber = Random.Next(0, 10);
+            return newNumber = Random.Next(0, 6);
         }
 
 

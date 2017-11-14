@@ -13,7 +13,7 @@ namespace DSED03ProjectHorseRace
         public string NotBetYet { get; set; } = " has not placed a bet.";
         public RadioButton FakeRB { get; set; } = new RadioButton();
 
-        //public bool isTrue { get; set; } = false;
+        public bool isWinner { get; set; } = false;
 
         public int Tortoise { get; set; }
         public int Guy { get; set; }
