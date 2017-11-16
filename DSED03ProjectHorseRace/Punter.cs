@@ -16,8 +16,5 @@ namespace DSED03ProjectHorseRace
         public int BettorTortoiseNum { get; set; }
 
         public RadioButton MyRadioButton { get; set; }
-
-
-
     }
 }

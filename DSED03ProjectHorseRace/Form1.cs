@@ -17,7 +17,7 @@ namespace DSED03ProjectHorseRace
         //private Horse.Horse DefaultHorse = new Horse01();
 
         Punter[] myGuy = new Punter[3];
-        Tortoise[] myTortoise = new Tortoise[8];
+        Tortoise[] myTortoise = new Tortoise[4];
         Property myProperty = new Property();
 
 
@@ -48,22 +48,6 @@ namespace DSED03ProjectHorseRace
             this.PointToScreen(pb4.Location);
             pb4.Parent = pbRaceTrack;
             pb4.BackColor = Color.Transparent;
-
-            this.PointToScreen(pb5.Location);
-            pb5.Parent = pbRaceTrack;
-            pb5.BackColor = Color.Transparent;
-
-            this.PointToScreen(pb6.Location);
-            pb6.Parent = pbRaceTrack;
-            pb6.BackColor = Color.Transparent;
-
-            this.PointToScreen(pb7.Location);
-            pb7.Parent = pbRaceTrack;
-            pb7.BackColor = Color.Transparent;
-
-            this.PointToScreen(pb8.Location);
-            pb8.Parent = pbRaceTrack;
-            pb8.BackColor = Color.Transparent;
         }
         #endregion
 
@@ -75,12 +59,7 @@ namespace DSED03ProjectHorseRace
                 myGuy[myProperty.Guy].GuyID = myProperty.Guy;
             }
 
-
-            //for (int j = 0; j < 4; j++)
-            //{
-            //    myHorse[j] = Factory.GetAHorse(j);
-            //    myHorse[j].HorseID = j;
-            //}
+            LBLs();
 
             GuyNotBetYet();
 
@@ -88,24 +67,18 @@ namespace DSED03ProjectHorseRace
             myGuy[1].MyRadioButton.Text = "Sam";
             myGuy[2].MyRadioButton.Text = "Joshua";
 
-            myTortoise[0] = new Tortoise() { TortoiseID = 1, Name = "Shell Shock" };
-            myTortoise[1] = new Tortoise() { TortoiseID = 2, Name = "MiShell" };
-            myTortoise[2] = new Tortoise() { TortoiseID = 3, Name = "Slowpoke" };
-            myTortoise[3] = new Tortoise() { TortoiseID = 4, Name = "Sally Monella" };
-            myTortoise[4] = new Tortoise() { TortoiseID = 5, Name = "Shelldon" };
-            myTortoise[5] = new Tortoise() { TortoiseID = 6, Name = "Voldetort" };
-            myTortoise[6] = new Tortoise() { TortoiseID = 7, Name = "Aristurtle" };
-            myTortoise[7] = new Tortoise() { TortoiseID = 8, Name = "Zippy" };
+            for (myProperty.Tortoise = 0; myProperty.Tortoise < 4; myProperty.Tortoise++)
+            {
+                myTortoise[myProperty.Tortoise] = Factory.GetATortoise(myProperty.Tortoise);
+                myTortoise[myProperty.Tortoise].TortoiseID = myProperty.Tortoise;
+            }
+
+
 
             myTortoise[0].MyPictureBox = pb1;
             myTortoise[1].MyPictureBox = pb2;
             myTortoise[2].MyPictureBox = pb3;
             myTortoise[3].MyPictureBox = pb4;
-            myTortoise[4].MyPictureBox = pb5;
-            myTortoise[5].MyPictureBox = pb6;
-            myTortoise[6].MyPictureBox = pb7;
-            myTortoise[7].MyPictureBox = pb8;
-
 
             // will give me how many tortoises I have
             foreach (var id in myTortoise)
@@ -113,19 +86,27 @@ namespace DSED03ProjectHorseRace
                 if (Factory.TortoiseCount < id.TortoiseID)
                 {
                     Factory.TortoiseCount = id.TortoiseID;
+                    Factory.TortoiseCount += 1;
                 }
-                Factory.TortoiseCount += 1;
+
             }
+        }
+
+        private void LBLs()
+        {
+            myProperty.LBLJoe = myProperty.NotBetYet;
+            myProperty.LBLSam = myProperty.NotBetYet;
+            myProperty.LBLJoshua = myProperty.NotBetYet;
         }
 
         private void GuyNotBetYet()
         {
             myGuy[0].MyRadioButton = radioButton1;
-            lblJoe.Text = myGuy[0].GuyName + myProperty.NotBetYet;
+            lblJoe.Text = myGuy[0].GuyName + myProperty.LBLJoe;
             myGuy[1].MyRadioButton = radioButton2;
-            lblSam.Text = myGuy[1].GuyName + myProperty.NotBetYet;
+            lblSam.Text = myGuy[1].GuyName + myProperty.LBLSam;
             myGuy[2].MyRadioButton = radioButton3;
-            lblJoshua.Text = myGuy[2].GuyName + myProperty.NotBetYet;
+            lblJoshua.Text = myGuy[2].GuyName + myProperty.LBLJoshua;
         }
 
         private void allRB_CheckedChanged(object sender, EventArgs e)
@@ -143,7 +124,7 @@ namespace DSED03ProjectHorseRace
                 lblBettor.Text = myGuy[myProperty.Guy].GuyName;
                 Cash();
                 nudTortoiseNumber.Minimum = 1;
-                nudTortoiseNumber.Maximum = Factory.TortoiseCount - 1;
+                nudTortoiseNumber.Maximum = Factory.TortoiseCount;
                 btnBet.Text = "Place Bet for " + lblBettor.Text;// myGuy[myProperty.Guy].GuyName;
                 btnBet.Enabled = true;
             }
@@ -172,14 +153,15 @@ namespace DSED03ProjectHorseRace
             nudCash.Maximum = myGuy[myProperty.Guy].MaxCash;
             nudCash.Text = myGuy[myProperty.Guy].MaxCash.ToString();
 
-            MaxCashUsed();
+            //MaxCashUsed();
         }
 
         private void btnBet_Click(object sender, EventArgs e)
         {
             myProperty.Guy = Convert.ToInt16(myProperty.FakeRB.Tag);
             myGuy[myProperty.Guy].AmountBet = Convert.ToInt32(nudCash.Text);
-            myGuy[myProperty.Guy].MaxCash = myGuy[myProperty.Guy].MaxCash - myGuy[myProperty.Guy].AmountBet;
+            //myGuy[myProperty.Guy].MaxCash = myGuy[myProperty.Guy].MaxCash - myGuy[myProperty.Guy].AmountBet;
+
 
             AmountBetText();
             Cash();
@@ -187,20 +169,22 @@ namespace DSED03ProjectHorseRace
 
         private void AmountBetText()
         {
-            myProperty.Tortoise = myTortoise[myProperty.Tortoise].TortoiseID = Convert.ToInt32(nudTortoiseNumber.Text) - 1;
+            myProperty.Tortoise = Convert.ToInt16(nudTortoiseNumber.Text);
+            myProperty.TortoiseID = myProperty.Tortoise - 1;
+            myTortoise[myProperty.TortoiseID].TortoiseID = myProperty.Tortoise;
             myGuy[myProperty.Guy].BettorTortoiseNum = myProperty.Tortoise;
             if (myProperty.Guy == 0)
             {
-                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on #" + (myProperty.Tortoise + 1) + " " + myTortoise[myProperty.Tortoise].Name + ".";
+                lblJoe.Text = myGuy[0].GuyName + " has bet $" + myGuy[0].AmountBet + " on #" + (myProperty.Tortoise) + " " + myTortoise[myProperty.TortoiseID].Name + ".";
             }
             else if (myProperty.Guy == 1)
             {
-                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet + " on #" + (myProperty.Tortoise + 1) + " " + myTortoise[myProperty.Tortoise].Name + ".";
+                lblSam.Text = myGuy[1].GuyName + " has bet $" + myGuy[1].AmountBet + " on #" + (myProperty.Tortoise) + " " + myTortoise[myProperty.TortoiseID].Name + ".";
 
             }
             else
             {
-                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet + " on #" + (myProperty.Tortoise + 1) + " " + myTortoise[myProperty.Tortoise].Name + ".";
+                lblJoshua.Text = myGuy[2].GuyName + " has bet $" + myGuy[2].AmountBet + " on #" + (myProperty.Tortoise) + " " + myTortoise[myProperty.TortoiseID].Name + ".";
             }
             btnRace.Visible = true;
         }
@@ -212,34 +196,30 @@ namespace DSED03ProjectHorseRace
 
         }
 
+        #region Start Race
         private void StartRace()
         {
             Factory.RaceTrackLength = Form1.ActiveForm.Width - pb1.Width - (pb1.Width / 2);
-            while (pb1.Location.X < Factory.RaceTrackLength &&
-                                 pb2.Location.X < Factory.RaceTrackLength &&
-                                 pb3.Location.X < Factory.RaceTrackLength &&
-                                 pb4.Location.X < Factory.RaceTrackLength &&
-                                 pb5.Location.X < Factory.RaceTrackLength &&
-                                 pb6.Location.X < Factory.RaceTrackLength &&
-                                 pb7.Location.X < Factory.RaceTrackLength &&
-                                 pb8.Location.X < Factory.RaceTrackLength
-                        )
+            while (
+                pb1.Location.X < Factory.RaceTrackLength &&
+                pb2.Location.X < Factory.RaceTrackLength &&
+                pb3.Location.X < Factory.RaceTrackLength &&
+                pb4.Location.X < Factory.RaceTrackLength
+                )
             //do
             {
-                for (myProperty.Tortoise = 0; myProperty.Tortoise < 8; myProperty.Tortoise++)
+
+                for (myProperty.Tortoise = 0; myProperty.Tortoise < Factory.TortoiseCount; myProperty.Tortoise++)
                 {
                     myTortoise[myProperty.Tortoise].Run();
-                    Application.DoEvents();
+                    // Application.DoEvents();
+                    Thread.Sleep(1);
                     if (myTortoise[myProperty.Tortoise].MyPictureBox.Location.X >= Factory.RaceTrackLength)
                     {
-                        myProperty.TortoiseWinner = myTortoise[myProperty.Tortoise].TortoiseID;
-                        if (myProperty.TortoiseWinner == 0)
-                        {
-                            myProperty.TortoiseWinner = 1;
-                        }
+                        myProperty.TortoiseRaceNum = myProperty.Tortoise + 1;
+                        myProperty.TortoiseID = myProperty.Tortoise;
 
-                        //MessageBox.Show("Winner is Tortoise #" + myProperty.TortoiseWinner + " Name: " + myTortoise[myProperty.Tortoise].Name);
-                        lblWinner.Text = "Winner is Tortoise #" + myProperty.TortoiseWinner + " Name: " + myTortoise[myProperty.Tortoise].Name;
+                        lblWinner.Text = "Winner is Tortoise #" + myProperty.TortoiseRaceNum + " Name: " + myTortoise[myProperty.TortoiseID].Name;
                         IsWinner();
                     }
                 }
@@ -251,38 +231,80 @@ namespace DSED03ProjectHorseRace
             btnRace.Visible = false;
             btnBet.Visible = false;
             btnNewRace.Visible = true;
-
-
-
-
         }
+        #endregion
 
         private void IsWinner()
         {
-            if (myGuy[0].BettorTortoiseNum == myProperty.TortoiseWinner - 1)
+            for (myProperty.Guy = 0; myProperty.Guy < 3; myProperty.Guy++)
             {
-                myProperty.isWinner = true;
-                myGuy[0].MaxCash += (myGuy[0].AmountBet * 2);
-                lblMaxBet.Text = myGuy[0].GuyName + "'s max bet is $" + myGuy[0].MaxCash;
-                //Cash();
-                MaxCashUsed();
+                if (myGuy[myProperty.Guy].BettorTortoiseNum == myProperty.TortoiseRaceNum)
+                {
+                    myGuy[myProperty.Guy].MaxCash += myGuy[myProperty.Guy].AmountBet;
+                    btnBet.Enabled = true;
+                }
+                else
+                {
+                    myGuy[myProperty.Guy].MaxCash -= myGuy[myProperty.Guy].AmountBet;
+                    if (myGuy[myProperty.Guy].MaxCash == 0)
+                    {
+                        if (myGuy[0].MaxCash == 0)
+                        {
+                            myProperty.LBLJoe = myProperty.Busted;
+                            lblJoe.Text = myGuy[0].GuyName + myProperty.LBLJoe;
+                            lblJoe.ForeColor = Color.Red;
+                        }
+                        else if (myGuy[1].MaxCash == 0)
+                        {
+                            myProperty.LBLSam = myProperty.Busted;
+                            lblSam.Text = myGuy[1].GuyName + myProperty.LBLSam;
+                            lblSam.ForeColor = Color.Red;
+                        }
+                        else if (myGuy[2].MaxCash == 0)
+                        {
+                            myProperty.LBLJoshua = myProperty.Busted;
+                            lblJoshua.Text = myGuy[2].GuyName + myProperty.LBLJoshua;
+                            lblJoshua.ForeColor = Color.Red;
+                        }
+
+                        if (myGuy[0].MaxCash == 0 && myGuy[1].MaxCash == 0 && myGuy[2].MaxCash == 0)
+                        {
+                            MessageBox.Show("Game Over!");
+                        }
+
+                        myGuy[myProperty.Guy].MyRadioButton.Enabled = false;
+                        btnBet.Enabled = false;
+                    }
+                }
+                lblMaxBet.Text = myGuy[myProperty.Guy].GuyName + "'s max bet is $" + myGuy[myProperty.Guy].MaxCash;
             }
-            else if (myGuy[1].BettorTortoiseNum == myProperty.TortoiseWinner)
-            {
-                myProperty.isWinner = true;
-                myGuy[1].MaxCash += (myGuy[1].AmountBet * 2);
-                lblMaxBet.Text = myGuy[1].GuyName + "'s max bet is $" + myGuy[1].MaxCash;
-                //Cash();
-                MaxCashUsed();
-            }
-            else if (myGuy[2].BettorTortoiseNum == myProperty.TortoiseWinner)
-            {
-                myProperty.isWinner = true;
-                myGuy[2].MaxCash += (myGuy[2].AmountBet * 2);
-                lblMaxBet.Text = myGuy[2].GuyName + "'s max bet is $" + myGuy[2].MaxCash;
-                //Cash();
-                MaxCashUsed();
-            }
+
+
+
+            //if (myGuy[0].BettorTortoiseNum == myProperty.TortoiseWinner - 1)
+            //{
+            //    myProperty.isWinner = true;
+            //    myGuy[0].MaxCash += (myGuy[0].AmountBet * 2);
+            //    lblMaxBet.Text = myGuy[0].GuyName + "'s max bet is $" + myGuy[0].MaxCash;
+            //    //Cash();
+            //    MaxCashUsed();
+            //}
+            //else if (myGuy[1].BettorTortoiseNum == myProperty.TortoiseWinner)
+            //{
+            //    myProperty.isWinner = true;
+            //    myGuy[1].MaxCash += (myGuy[1].AmountBet * 2);
+            //    lblMaxBet.Text = myGuy[1].GuyName + "'s max bet is $" + myGuy[1].MaxCash;
+            //    //Cash();
+            //    MaxCashUsed();
+            //}
+            //else if (myGuy[2].BettorTortoiseNum == myProperty.TortoiseWinner)
+            //{
+            //    myProperty.isWinner = true;
+            //    myGuy[2].MaxCash += (myGuy[2].AmountBet * 2);
+            //    lblMaxBet.Text = myGuy[2].GuyName + "'s max bet is $" + myGuy[2].MaxCash;
+            //    //Cash();
+            //    MaxCashUsed();
+            //}
 
         }
 
@@ -290,7 +312,7 @@ namespace DSED03ProjectHorseRace
 
         private void btnNewRace_Click(object sender, EventArgs e)
         {//Moves all the Tortoises back to their starting positions
-            for (myProperty.Tortoise = 0; myProperty.Tortoise < 8; myProperty.Tortoise++)
+            for (myProperty.Tortoise = 0; myProperty.Tortoise < Factory.TortoiseCount; myProperty.Tortoise++)
             {
                 myTortoise[myProperty.Tortoise].StartingPostition();
             }

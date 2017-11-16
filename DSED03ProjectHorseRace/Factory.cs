@@ -27,7 +27,7 @@ namespace DSED03ProjectHorseRace
 
         public static int Number()
         {
-            return newNumber = Random.Next(0, 6);
+            return newNumber = Random.Next(1, 10);
         }
 
 
@@ -45,6 +45,24 @@ namespace DSED03ProjectHorseRace
 
                 default:
                     return new Guy01();
+            }
+        }
+
+        public static Tortoise GetATortoise(int id)
+        {
+            switch (id)
+            {
+                case 0:
+                    return new Tortoise01();
+                case 1:
+                    return new Tortoise02();
+                case 2:
+                    return new Tortoise03();
+                case 3:
+                    return new Tortoise04();
+
+                default:
+                    return new Tortoise01();
             }
         }
     }

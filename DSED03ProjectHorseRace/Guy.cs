@@ -14,7 +14,7 @@ namespace DSED03ProjectHorseRace
         {
             GuyID = 1;
             GuyName = "Joe";
-            MaxCash = 75;
+            MaxCash = 50;
         }
 
 
@@ -36,7 +36,7 @@ namespace DSED03ProjectHorseRace
         {
             GuyID = 3;
             GuyName = "Joshua";
-            MaxCash = 45;
+            MaxCash = 50;
         }
     }
 

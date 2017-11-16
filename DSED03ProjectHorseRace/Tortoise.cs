@@ -9,13 +9,13 @@ using System.Windows.Forms;
 namespace DSED03ProjectHorseRace
 {
 
-    class Tortoise
+    abstract class Tortoise
     {
         public int TortoiseID { get; set; }
         public string Name { get; set; }
         public PictureBox MyPictureBox { get; set; }
 
-        private int newDistance = 29;
+        private int newDistance = 76;
 
 
         public void UpdatePostition()
@@ -26,7 +26,7 @@ namespace DSED03ProjectHorseRace
         public void StartingPostition()
         {
             // new distance of the tortoise
-            newDistance = 29;
+            newDistance = 76;
             // current location
             var location = MyPictureBox.Location;
             // changes the current location to new location
