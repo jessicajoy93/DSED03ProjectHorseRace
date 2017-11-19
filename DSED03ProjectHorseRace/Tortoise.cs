@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace DSED03ProjectHorseRace
 {
 
-    abstract class Tortoise
+    public abstract class Tortoise
     {
         public int TortoiseID { get; set; }
         public string Name { get; set; }

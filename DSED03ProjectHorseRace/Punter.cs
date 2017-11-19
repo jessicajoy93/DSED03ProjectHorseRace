@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace DSED03ProjectHorseRace
 {
-    abstract class Punter
+    public abstract class Punter
     {
         public int GuyID { get; set; }
         public string GuyName { get; set; }

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace DSED03ProjectHorseRace
 {
 
-    class Guy01 : Punter
+    public class Guy01 : Punter
     {
         public Guy01()
         {

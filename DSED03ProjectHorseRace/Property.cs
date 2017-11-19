@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DSED03ProjectHorseRace
 {
-    class Property
+    public class Property
     {
         public string NotBetYet { get; set; } = " has not placed a bet.";
         public string Busted { get; set; } = " you have run out of Cash! BUSTED!";

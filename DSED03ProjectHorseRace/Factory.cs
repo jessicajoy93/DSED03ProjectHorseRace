@@ -9,7 +9,7 @@ using DSED03ProjectHorseRace;
 
 namespace DSED03ProjectHorseRace
 {
-    static class Factory
+    public static class Factory
     {
         private static Random Random = new Random();
         //public static int Number = Random.Next(0, 10);
